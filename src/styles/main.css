@@ -1,0 +1,264 @@
+/* Base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom classes */
+@layer components {
+  /* Layout */
+  .page-container {
+    @apply min-h-screen bg-white;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  /* Navigation */
+  .navbar {
+    @apply bg-white shadow-lg fixed w-full z-50;
+  }
+
+  .nav-container {
+    @apply flex justify-between h-20;
+  }
+
+  .nav-logo {
+    @apply flex items-center;
+  }
+
+  .nav-logo-icon {
+    @apply h-10 w-10 text-blue-600;
+  }
+
+  .nav-logo-text {
+    @apply ml-3 text-2xl font-bold text-gray-800 tracking-tight;
+  }
+
+  /* Responsive logo text */
+  @media (max-width: 640px) {
+    .nav-logo-text {
+      @apply text-lg;
+    }
+  }
+
+  .nav-links {
+    @apply hidden md:flex items-center space-x-8 ml-12;
+  }
+
+  .nav-link {
+    @apply text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-blue-50 font-medium;
+  }
+
+  .whatsapp-button {
+    @apply bg-gradient-to-r from-green-500 to-green-600 text-white flex items-center px-6 py-3 rounded-full hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-semibold;
+  }
+
+  /* Hero Section
+  .hero-section {
+    @apply relative h-[600px];
+  }
+
+  .hero-button {
+  @apply bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg flex items-center justify-center cursor-pointer;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  @apply relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] overflow-hidden;
+}
+
+.hero-image {
+  @apply w-full h-full object-cover object-center;
+}
+
+.hero-overlay {
+  @apply absolute inset-0  flex items-center justify-center;
+}
+
+.hero-content {
+  @apply text-center px-4 sm:px-6 md:px-8 max-w-4xl mx-auto;
+}
+
+.hero-title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-teal-950 mb-4 sm:mb-6 leading-tight;
+}
+
+.hero-subtitle {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl text-teal-950/90 mb-6 sm:mb-8 leading-relaxed;
+}
+
+  /* Responsive hero subtitle */
+  @media (max-width: 640px) {
+    .hero-subtitle {
+      @apply text-lg mb-6;
+    }
+  }
+
+  .hero-button {
+    @apply bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors;
+  }
+
+  /* Responsive hero button */
+  @media (max-width: 640px) {
+    .hero-button {
+      @apply px-6 py-2 text-base;
+    }
+  }
+
+  /* Features Section */
+  .features-section {
+    @apply py-16 bg-gray-50;
+  }
+
+  /* Responsive features section */
+  @media (max-width: 640px) {
+    .features-section {
+      @apply py-12;
+    }
+  }
+
+  .feature-card {
+    @apply bg-white p-6 rounded-lg shadow-lg;
+  }
+
+  /* Responsive feature cards */
+  @media (max-width: 640px) {
+    .feature-card {
+      @apply p-4;
+    }
+  }
+
+  .feature-icon {
+    @apply w-12 h-12 text-blue-600 mb-4;
+  }
+
+  /* Opening Hours */
+  .opening-hours {
+    @apply py-8 bg-blue-600;
+  }
+
+  .opening-hours-text {
+    @apply text-white text-center text-2xl;
+  }
+
+  /* Responsive opening hours */
+  @media (max-width: 640px) {
+    .opening-hours-text {
+      @apply text-lg px-4;
+    }
+  }
+
+  /* Gallery Section */
+  .gallery-section {
+    @apply py-16 bg-white;
+  }
+
+  /* Responsive gallery */
+  @media (max-width: 640px) {
+    .gallery-section {
+      @apply py-12;
+    }
+  }
+
+  /* Testimonials */
+  .testimonials-section {
+    @apply py-16 bg-gray-50;
+  }
+
+  /* Responsive testimonials */
+  @media (max-width: 640px) {
+    .testimonials-section {
+      @apply py-12;
+    }
+  }
+
+  .testimonial-card {
+    @apply bg-white p-6 rounded-lg shadow-lg;
+  }
+
+  .testimonial-avatar {
+    @apply w-12 h-12 rounded-full;
+  }
+
+  .testimonial-name {
+    @apply font-semibold;
+  }
+
+  .testimonial-stars {
+    @apply flex text-yellow-400;
+  }
+
+  /* Location */
+  .location-section {
+    @apply py-16 bg-white;
+  }
+
+  .location-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8 items-center;
+  }
+
+  .location-text {
+    @apply text-3xl font-bold mb-4;
+  }
+
+  /* Responsive location text */
+  @media (max-width: 640px) {
+    .location-text {
+      @apply text-2xl;
+    }
+  }
+
+  .location-description {
+    @apply text-gray-600 mb-6;
+  }
+
+  .map-container {
+    @apply h-[400px] bg-gray-200 rounded-lg;
+  }
+
+  /* Responsive map */
+  @media (max-width: 640px) {
+    .map-container {
+      @apply h-[300px];
+    }
+  }
+
+  /* Footer */
+  .footer {
+    @apply bg-gray-900 text-white pt-12 pb-8;
+  }
+
+  .footer-grid {
+    @apply grid grid-cols-1 md:grid-cols-4 gap-8;
+  }
+
+  /* Responsive footer grid */
+  @media (max-width: 768px) {
+    .footer-grid {
+      @apply grid-cols-1 gap-6;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .footer-grid {
+      @apply grid-cols-2 gap-6;
+    }
+  }
+
+  .footer-title {
+    @apply text-xl font-bold mb-4;
+  }
+
+  .footer-social {
+    @apply flex space-x-4;
+  }
+
+  .footer-link {
+    @apply hover:text-blue-400;
+  }
+
+  .footer-copyright {
+    @apply border-t border-gray-700 mt-8 pt-8 text-center;
+  }
+}
