@@ -31,7 +31,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center min-w-0 flex-1">
               <Link to="/" className="nav-logo flex-shrink-0 mr-4" onClick={closeMobileMenu}>
                 {/* <Tooth className="nav-logo-icon" /> */}
-                <span className="nav-logo-text">Family Dental Centre</span> 
+                <span className="nav-logo-text">Family Dental Centre</span>
               </Link>
 
               {/* Desktop Navigation */}

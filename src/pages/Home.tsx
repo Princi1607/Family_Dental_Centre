@@ -88,9 +88,9 @@ const Home = () => {
       {/* Hero Section */}
       <div className="hero-section">
         <img
-          src=".\backgroundImage.png"
+          src=".\backgroundImage1.jpg"
           alt="Modern Dental Clinic"
-          className="hero-image"
+          className="hero-image blur-[1px]"
         />
         <div className="hero-overlay">
           <div className="hero-content">
