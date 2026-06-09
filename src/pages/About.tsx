@@ -4,60 +4,68 @@ import { Shield, Sparkles, Stethoscope, Microscope, Users, Clock } from 'lucide-
 
 
 const galleryImages = [
-    {
-      url: "/ModernEquipment.jpg",
-      title: "Modern Equipment"
-    },
-    {
-      url: "/ComfortableEnvironment.png",
-      title: "Comfortable Environment"
-    },
-    {
-      url: "/ProfessionalCare.jpg",
-      title: "Professional Care"
-    },
-    {
-      url: "/State-of-the-art-facility.jpg",
-      title: "State-of-the-art Facility"
-    },
-    {
-      url: "/DentalProcedures.png",
-      title: "Dental Procedures"
-    },
-    {
-      url: "/ExpertTeam.jpg",
-      title: "Expert Team"
-    }
-  ];
+  {
+    url: "/ModernEquipment1.jpeg",
+    title: "Modern Equipment"
+  },
+  {
+    url: "/ComfortableEnvironment1.jpeg",
+    title: "Comfortable Environment"
+  },
+  {
+    url: "/ProfessionalCare.jpg",
+    title: "Professional Care"
+  },
+  {
+    url: "/State-of-the-art-facility1.jpeg",
+    title: "State-of-the-art Facility"
+  },
+  {
+    url: "/DentalProcedures1.jpeg",
+    title: "Dental Procedures"
+  },
+  {
+    url: "/ExpertTeam1.jpeg",
+    title: "Expert Team"
+  }
+];
 
 export default function About() {
 
   const handleScheduleVisit = () => {
-    const phoneNumber = '9899424426';
+    // const phoneNumber = '9899424426';
 
-    if (navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
-      // 📱 Mobile → open dialer
+    // if (navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
+    //   // 📱 Mobile → open dialer
+    //   window.location.href = `tel:+91${phoneNumber}`;
+    // } else {
+    //   // 🖥️ Desktop → go to contact section
+    //   window.location.href = '/contact#contact-cards';
+    // }
+
+    const phoneNumber = "9899424426";
+
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
       window.location.href = `tel:+91${phoneNumber}`;
     } else {
-      // 🖥️ Desktop → go to contact section
-      window.location.href = '/contact#contact-cards';
+      window.open(`https://wa.me/91${phoneNumber}`, "_blank");
     }
   };
   const features = [
     {
-      image: "/State-of-the-art-facility.jpg",
+      image: "/ModernEquipment1.jpeg",
       title: "State-of-the-Art Technology",
       description: "Our clinic is equipped with the latest dental technology including 3D imaging, digital X-rays, and laser dentistry equipment to provide precise and comfortable treatments.",
-      icon: Microscope  
+      icon: Microscope
     },
     {
-      image: "/ProfessionalCare.jpg",
+      image: "/DentalProcedures1.jpeg",
       title: "Comprehensive Care",
       description: "From routine check-ups to advanced procedures, we offer a full range of dental services to meet all your oral health needs under one roof.",
       icon: Stethoscope
     },
     {
-      image: "/DentalProcedures.png",
+      image: "/ProfessionalCare.jpg",
       title: "Patient-First Approach",
       description: "We prioritize patient comfort and satisfaction, ensuring a relaxing environment and personalized care for every visit.",
       icon: Users
@@ -67,13 +75,13 @@ export default function About() {
   return (
     <div className="pt-16 bg-gray-50">
       {/* Achievement Banner */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="relative h-[400px] sm:h-[450px] md:h-[500px] overflow-hidden"
       >
         <div className="absolute inset-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80"
             alt="Dental Clinic"
             className="w-full h-full object-cover"
@@ -203,7 +211,7 @@ export default function About() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-blue-50 transition-colors"
-                onClick={handleScheduleVisit}   // 👈 add this
+              onClick={handleScheduleVisit}   // 👈 add this
 
             >
               Schedule Your Visit

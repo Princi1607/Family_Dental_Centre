@@ -9,8 +9,8 @@ const Footer = () => {
           <div className="mb-8 md:mb-0">
             <h3 className="footer-title">Connect With Us</h3>
             <div className="footer-social">
-              <a 
-                href="https://www.instagram.com/family__dental_center/" 
+              <a
+                href="https://www.instagram.com/family__dental_center/"
                 className="footer-link p-2 hover:bg-gray-800 rounded-lg transition-colors"
                 aria-label="Follow us on Instagram"
               >
@@ -32,24 +32,50 @@ const Footer = () => {
               </a> */}
             </div>
           </div>
-          
+
           <div className="mb-8 md:mb-0">
             <h3 className="footer-title">Contact Info</h3>
             <div className="space-y-3">
-              <p className="flex items-start text-sm md:text-base">
-                <MapPin className="mr-2 mt-1 flex-shrink-0 h-4 w-4" /> 
+              {/* <p className="flex items-start text-sm md:text-base">
+                <MapPin className="mr-2 mt-1 flex-shrink-0 h-4 w-4" />
                 <span>H.No. 8 Block 11, Spring Field Colony, Faridabad, Haryana 121003</span>
-              </p>
+              </p> */}
+
+              <a
+                href="https://maps.app.goo.gl/j5oQNuvYSb7iWXUs7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start text-sm md:text-base hover:text-blue-400 transition-colors"
+              >
+                <MapPin className="mr-2 mt-1 flex-shrink-0 h-4 w-4" />
+                <span>
+                  H.No. 8 Block 11, Spring Field Colony, Faridabad, Haryana 121003
+                </span>
+              </a>
               <p className="flex items-center text-sm md:text-base">
                 <Phone className="mr-2 flex-shrink-0 h-4 w-4" />
-                <a href="" className="hover:text-blue-400 transition-colors">
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    const phoneNumber = "9899424426";
+
+                    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                      window.location.href = `tel:+91${phoneNumber}`;
+                    } else {
+                      window.open(`https://wa.me/91${phoneNumber}`, "_blank");
+                    }
+                  }}
+                  className="hover:text-blue-400 transition-colors"
+                >
                   098994 24426
                 </a>
               </p>
             </div>
           </div>
-          
-          <div className="mb-8 md:mb-0">
+
+          {/* <div className="mb-8 md:mb-0">
             <h3 className="footer-title">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -68,8 +94,29 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+          </div> */}
+
+          <div className="mb-8 md:mb-0">
+            <h3 className="footer-title">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <span className="footer-link text-sm md:text-base">
+                  Privacy Policy
+                </span>
+              </li>
+              <li>
+                <span className="footer-link text-sm md:text-base">
+                  Terms & Conditions
+                </span>
+              </li>
+              <li>
+                <span className="footer-link text-sm md:text-base">
+                  Book Appointment
+                </span>
+              </li>
+            </ul>
           </div>
-          
+
           <div className="mb-8 md:mb-0">
             <h3 className="footer-title">Opening Hours</h3>
             <ul className="space-y-2 text-sm md:text-base">
@@ -84,7 +131,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="footer-copyright">
           <p className="text-sm md:text-base">&copy; Family Dental Centre. All rights reserved.</p>
         </div>

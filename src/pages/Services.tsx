@@ -7,18 +7,29 @@ export default function Services() {
 
   // ✅ Fixed handler (added missing closing brace)
   const handleBookConsultation = () => {
-    const phoneNumber = '9899424426';
+    // const phoneNumber = '9899424426';
 
-    if (
-      navigator.userAgent.match(
-        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
-      )
-    ) {
-      // 📱 Mobile → open dialer
+    // if (
+    //   navigator.userAgent.match(
+    //     /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+    //   )
+    // ) {
+    //   // 📱 Mobile → open dialer
+    //   window.location.href = `tel:+91${phoneNumber}`;
+    // } else {
+    //   // 🖥️ Desktop → go to contact section
+    //   window.location.href = '/contact#contact-cards';
+    // }
+
+
+    const phoneNumber = "9899424426";
+
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      // 📱 Mobile → Call
       window.location.href = `tel:+91${phoneNumber}`;
     } else {
-      // 🖥️ Desktop → go to contact section
-      window.location.href = '/contact#contact-cards';
+      // 🖥️ Desktop → WhatsApp Web
+      window.open(`https://wa.me/91${phoneNumber}`, "_blank");
     }
   };
 
@@ -319,7 +330,7 @@ export default function Services() {
       </div>
 
       {/* Keep testimonials section background white */}
-      <div className="bg-white pb-16 sm:pb-20 md:pb-24"></div>
+      {/* <div className="bg-white pb-16 sm:pb-20 md:pb-24"></div> */}
     </div>
   );
 }

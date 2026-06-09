@@ -1,4 +1,4 @@
-import React, { useEffect , useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Calendar } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -8,14 +8,24 @@ export default function Contact() {
   const contactCardsRef = useRef<HTMLDivElement>(null);
 
   const handleBookAppointment = () => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    if (isMobile) {
-      // Open dialer on mobile
-      window.location.href = "tel:+919899424426"; // replace with your number
+    // if (isMobile) {
+    //   // Open dialer on mobile
+    //   window.location.href = "tel:+919899424426"; // replace with your number
+    // } else {
+    //   // Scroll to contact-cards section on desktop
+    //   contactCardsRef.current?.scrollIntoView({ behavior: "smooth" });
+    // }
+
+    const phoneNumber = "9899424426";
+
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      // 📱 Mobile → Call
+      window.location.href = `tel:+91${phoneNumber}`;
     } else {
-      // Scroll to contact-cards section on desktop
-      contactCardsRef.current?.scrollIntoView({ behavior: "smooth" });
+      // 🖥️ Desktop → WhatsApp Web
+      window.open(`https://wa.me/91${phoneNumber}`, "_blank");
     }
   };
 
@@ -43,10 +53,11 @@ export default function Contact() {
       color: "from-purple-500 to-blue-500"
     },
     {
-      title: "Call Us",
+      title: "Give us a Call",
       icon: Phone,
       content: [
         "+91 9899424426",
+        "We'll call you back within 24 hours"
       ],
       color: "from-blue-500 to-cyan-500"
     },
@@ -55,6 +66,7 @@ export default function Contact() {
       icon: Mail,
       content: [
         "Nigam.deepanshu88@gmail.com",
+        "We'll respond within 24 hours"
       ],
       color: "from-cyan-500 to-teal-500"
     },
@@ -73,13 +85,13 @@ export default function Contact() {
   return (
     <div className="pt-16 bg-gray-50">
       {/* Contact Banner */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="relative h-[500px] overflow-hidden"
       >
         <div className="absolute inset-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&q=80"
             alt="Dental Office"
             className="w-full h-full object-cover"
@@ -97,7 +109,7 @@ export default function Contact() {
                 We're Here for Your Smile
               </h1>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Your dental health is our priority. Reach out to us for appointments, 
+                Your dental health is our priority. Reach out to us for appointments,
                 inquiries, or emergency dental care. We're always here to help.
               </p>
               <motion.button
@@ -117,7 +129,7 @@ export default function Contact() {
       </motion.div>
 
       {/* Contact Cards */}
-      <div  id="contact-cards" ref={contactCardsRef} className="py-24 relative">
+      <div id="contact-cards" ref={contactCardsRef} className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
@@ -126,18 +138,65 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group"
+                className="relative group h-full"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${info.color} rounded-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
-                <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl group-hover:scale-[1.02] transition-transform duration-300">
+                <div className="relative bg-white rounded-2xl p-6 shadow-xl h-full group-hover:scale-[1.02] transition-transform duration-300">
                   <div className="flex items-center mb-4">
                     <info.icon className="w-8 h-8 mr-3" />
                     <h3 className="text-xl font-bold">{info.title}</h3>
                   </div>
                   <div className="space-y-2">
-                    {info.content.map((item, i) => (
+                    {/* {info.content.map((item, i) => (
                       <p key={i} className="text-gray-600">{item}</p>
-                    ))}
+                    ))} */}
+
+                    {info.title === "Give us a Call" ? (
+                      <><a
+                        href={`tel:${info.content[0].replace(/\s/g, "")}`}
+                        className="text-blue-600 font-semibold hover:text-blue-800 hover:underline"
+                      >
+                        {info.content[0]}
+                      </a><p className="text-gray-600 text-sm mt-2">
+                          {info.content[1]}
+                        </p>
+                      </>
+                    ) : info.title === "Email Us" ? (
+                      // <a
+                      //   href={`mailto:${info.content[0]}`}
+                      //   className="text-blue-600 font-semibold hover:text-blue-800 hover:underline break-all"
+                      // >
+                      //   {info.content[0]}
+                      // </a>
+                      <>
+                          {/* // <a */}
+                          {/* //   href={`mailto:${info.content[0]}`}
+                          //   className="text-blue-600 font-semibold hover:text-blue-800 hover:underline break-all"
+                          // >
+                          //   {info.content[0]}
+                          // </a> */}
+                          <a
+                            href="mailto:Nigam.deepanshu88@gmail.com?subject=Appointment%20Inquiry"
+                            className="text-blue-600 font-semibold hover:text-blue-800 hover:underline"
+                          >
+                            Nigam.deepanshu88@gmail.com
+                          </a><p className="text-gray-600 text-sm mt-2">
+                            {info.content[1]}
+                          </p></>
+                    ) : (
+                      info.content.map((item, i) => (
+                        <p
+                          key={i}
+                          className={
+                            item === "Monday: Closed"
+                              ? "font-bold text-red-600"
+                              : "text-gray-600"
+                          }
+                        >
+                          {item}
+                        </p>
+                      ))
+                    )}
                   </div>
                 </div>
               </motion.div>

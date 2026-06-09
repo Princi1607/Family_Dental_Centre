@@ -21,20 +21,44 @@ function ScrollToTop() {
 
 function App() {
   return (
+    // <Router>
+    //   <ScrollToTop />
+    //   <div className="page-container">
+    //     <Navbar />
+    //     <Routes>
+    //       <Route path="/" element={<Home />} />
+    //       <Route path="/about" element={<About />} />
+    //       <Route path="/services" element={<Services />} />
+    //       <Route path="/doctors" element={<Doctors />} />
+    //       <Route path="/contact" element={<Contact />} />
+    //     </Routes>
+    //     <Footer />
+    //   </div>
+    // </Router>
     <Router>
-      <ScrollToTop />
-      <div className="page-container">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/doctors" element={<Doctors />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+      <Navbar/>
+  <section id="home" className="scroll-mt-20">
+    <Home />
+  </section>
+
+  <section id="about" className="scroll-mt-20">
+    <About />
+  </section>
+
+  <section id="services" className="scroll-mt-20">
+    <Services />
+  </section>
+
+  <section id="doctors" className="scroll-mt-20">
+    <Doctors />
+  </section>
+
+  <section id="contact" className="scroll-mt-20">
+    <Contact />
+  </section>
+
+  <Footer/>
+</Router>
   );
 }
 

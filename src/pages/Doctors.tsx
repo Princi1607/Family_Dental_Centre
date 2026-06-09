@@ -127,7 +127,7 @@ export default function Doctors() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg pointer-events-none" />
                 <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 text-white">
                   <motion.h2
                     initial={{ opacity: 0, y: 20 }}

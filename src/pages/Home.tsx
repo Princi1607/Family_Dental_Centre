@@ -1,22 +1,31 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, Star, MapPin, Phone } from 'lucide-react';
+import { Calendar, Clock, Star, MapPin, Phone, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
 
+  const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
+
   const handleBookAppointment = () => {
-    const phoneNumber = '9899424426';
-    
-    // Check if device supports tel: links (mobile devices)
-    if (navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
-    // Mobile device - directly initiate call
-      window.location.href = `tel:+91${phoneNumber}`;
+    // const phoneNumber = '9899424426';
+
+    // // Check if device supports tel: links (mobile devices)
+    // if (navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
+    //   // Mobile device - directly initiate call
+    //   window.location.href = `tel:+91${phoneNumber}`;
+    // } else {
+    //   // Desktop - redirect to Contact page
+    //   navigate('/contact#contact-cards');
+    // }
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href = "tel:+919899424426";
     } else {
-    // Desktop - redirect to Contact page
-      navigate('/contact#contact-cards');
+      window.open("https://wa.me/919899424426", "_blank");
     }
   };
 
@@ -25,14 +34,14 @@ const Home = () => {
     const widgetContainer = document.getElementById('elfsight-reviews');
     if (widgetContainer && !widgetContainer.hasChildNodes()) {
       widgetContainer.innerHTML = '<div class="elfsight-app-518b1950-00f8-4bbd-a79b-f2a0f35ce664" data-elfsight-app-lazy></div>';
-      
+
       // Try to initialize if available
       const checkAndInit = () => {
         if (window.eapps?.initialize) {
           window.eapps.initialize();
         }
       };
-      
+
       // Try immediately and also after a short delay
       checkAndInit();
       setTimeout(checkAndInit, 1000);
@@ -58,27 +67,27 @@ const Home = () => {
 
   const galleryImages = [
     {
-      url: "/ModernEquipment.jpg",
+      url: "/ModernEquipment1.jpeg",
       title: "Modern Equipment"
     },
     {
-      url: "/ComfortableEnvironment.png",
+      url: "/ComfortableEnvironment1.jpeg",
       title: "Comfortable Environment"
     },
     {
-      url: "/ProfessionalCare.jpg",
+      url: "/Area.jpeg",
       title: "Professional Care"
     },
     {
-      url: "/State-of-the-art-facility.jpg",
+      url: "/State-of-the-art-facility1.jpeg",
       title: "State-of-the-art Facility"
     },
     {
-      url: "/DentalProcedures.png",
+      url: "/DentalProcedures1.jpeg",
       title: "Dental Procedures"
     },
     {
-      url: "/ExpertTeam.jpg",
+      url: "/ExpertTeam1.jpeg",
       title: "Expert Team"
     }
   ];
@@ -172,7 +181,10 @@ const Home = () => {
             className="opening-hours-text"
           >
             <p>
-              Open Tuesday to Sunday : 10:00 AM - 2:00 PM & 5:00 PM - 8:00 PM | Monday: Closed
+              Open Tuesday to Sunday : 10:00 AM - 2:00 PM & 5:00 PM - 8:00 PM |{" "}
+              <span className="font-bold text-yellow-500">
+                Monday: Closed
+              </span>
             </p>
           </motion.div>
         </div>
@@ -196,7 +208,8 @@ const Home = () => {
                 <img
                   src={image.url}
                   alt={image.title}
-                  className="w-full h-full object-cover relative z-[1]"
+                  className="w-full h-full object-cover relative z-[1] cursor-pointer"
+                  onClick={() => setSelectedImage(image.url)}
                 />
 
                 {/* ⬇️ Overlay stays below because it has default z-index (auto or 0) */}
@@ -236,10 +249,22 @@ const Home = () => {
               <p className="location-description">
                 Visit us at our state-of-the-art facility. We're conveniently located in the heart of the city.
               </p>
-              <div className="flex items-start sm:items-center text-blue-600 text-sm sm:text-base">
+              {/* <div className="flex items-start sm:items-center text-blue-600 text-sm sm:text-base">
                 <MapPin className="w-5 h-5 sm:w-6 sm:h-6 mr-2 mt-1 sm:mt-0 flex-shrink-0" />
                 <span className="leading-relaxed">H.No. 8 Block 11, Spring Field Colony, Faridabad, Haryana 121003</span>
-              </div>
+              </div> */}
+
+              <a
+                href="https://maps.app.goo.gl/8hKxeKfUALvN1xKK7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start sm:items-center text-blue-600 text-sm sm:text-base hover:text-blue-800 hover:underline transition-colors"
+              >
+                <MapPin className="w-5 h-5 sm:w-6 sm:h-6 mr-2 mt-1 sm:mt-0 flex-shrink-0" />
+                <span className="leading-relaxed">
+                  H.No. 8 Block 11, Spring Field Colony, Faridabad, Haryana 121003
+                </span>
+              </a>
             </div>
             <div className="map-container mx-4 sm:mx-0">
               <div className="w-full h-full rounded-lg overflow-hidden">
@@ -250,7 +275,7 @@ const Home = () => {
                   style={{
                     border: 0,
                     width: "100%",
-                    height: "300px"
+                    height: "100%"
                   }}
                   allowFullScreen
                   loading="lazy"
@@ -262,6 +287,26 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-white"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X size={32} />
+          </button>
+
+          <img
+            src={selectedImage}
+            alt="Preview"
+            className="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 };
